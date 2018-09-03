@@ -2,17 +2,26 @@ import { Posts } from 'meteor/example-forum'
 import Users from 'meteor/vulcan:users'
 
 Posts.checkAccess = (currentUser, post) => {
+  // TODO: IBETA ONLY Only logged-in users can see forum posts
+  if (!currentUser) {
+    return false;
+  }
   if (Users.isAdmin(currentUser)) {
     return true
   } else if (Users.owns(currentUser, post) || Users.isSharedOn(currentUser, post)) {
     return true;
-  } else if (post.isFuture || post.draft) {
-    return false;
-  } else {
-    const status = _.findWhere(Posts.statuses, {value: post.status});
-    return Users.canDo(currentUser, `posts.view.${status.label}`);
   }
+  if (post.isFuture || post.draft) {
+    return false;
+  }
+  const status = _.findWhere(Posts.statuses, {value: post.status});
+  return Users.canDo(currentUser, `posts.view.${status.label}`);
 }
+
+// TODO Q Is this overruled by the above?
+// TODO: IBETA ONLY Only logged-in users can see forum posts
+Users.groups.guests.cannot('posts.view.approved')
+Users.groups.members.can('posts.view.approved')
 
 const votingActions = [
   'posts.smallDownvote',

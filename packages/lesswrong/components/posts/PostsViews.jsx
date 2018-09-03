@@ -8,18 +8,9 @@ import classnames from 'classnames';
 import Users from 'meteor/vulcan:users';
 
 const viewDataDict = {
-  'curated': {
-    label: "Curated Posts",
-    description: "Curated - Recent, high quality posts selected \nby the LessWrong moderation team.",
-    learnMoreLink: "/posts/tKTcrnKn2YSdxkxKG/frontpage-posting-and-commenting-guidelines",
-    categoryIcon:"star",
-    rssView: "curated-rss",
-    rss:true
-  },
   'frontpage': {
     label:'Frontpage Posts',
-    description: "Posts meeting our frontpage guidelines:\n • interesting, insightful, useful\n • aim to explain, not to persuade\n • avoid meta discussion \n • relevant to people whether or not they \nare involved with the LessWrong community.",
-    learnMoreLink: "/posts/tKTcrnKn2YSdxkxKG/frontpage-posting-and-commenting-guidelines",
+    description: "Posts meeting our frontpage guidelines:\n • interesting, insightful, useful\n • aim to explain, not to persuade\n • avoid meta discussion \n • relevant to people whether or not they \nare involved with the EA community.",
     includes: "(includes curated content and frontpage posts)",
     rssView: "frontpage-rss",
     rss:true
@@ -27,21 +18,20 @@ const viewDataDict = {
   'community': {
     label: 'All Posts',
     description: "Includes personal and meta blogposts\n (as well as curated and frontpage).",
-    learnMoreLink: "/posts/tKTcrnKn2YSdxkxKG/frontpage-posting-and-commenting-guidelines",
     categoryIcon:"person",
-    rssView: "community-rss",
+    rssView: "all-posts-rss",
     rss:true
   },
   'meta': {
-    label: 'Meta',
-    description: "Meta - Discussion about the LessWrong site.",
+    label: 'Community',
+    description: "Discussion about the EA Community and the EA Forum itself",
     categoryIcon:"details",
-    rssView: "meta-rss",
+    rssView: "community-rss",
     rss:true
   },
   'daily': {
     label: 'Daily',
-    description: "Daily - All posts on LessWrong, sorted by date",
+    description: "Daily - All posts on the EA Forum, sorted by date",
     rss:false
   },
   'more': {
@@ -54,7 +44,8 @@ const viewDataDict = {
   'scheduled': 'scheduled posts',
   'all_drafts': 'all drafts',
 }
-const defaultViews = ["curated", "frontpage"];
+// TODO replace list with single value
+const defaultViews = ["frontpage"];
 const defaultExpandedViews = ["community"];
 
 const ChipStyle = {
@@ -98,7 +89,7 @@ class PostsViews extends Component {
 
   getCurrentView = () => {
     const props = this.props;
-    return _.clone(props.router.location.query).view || props.defaultView || (props.currentUser && props.currentUser.currentFrontpageFilter) || (this.props.currentUser ? "frontpage" : "curated");
+    return _.clone(props.router.location.query).view || props.defaultView || (props.currentUser && props.currentUser.currentFrontpageFilter) || "frontpage";
   }
 
   renderMenu = (viewData, view) => {

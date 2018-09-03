@@ -81,7 +81,7 @@
 
 .posts-views {
   .view-chip {
-    color: $light-green;
+    color: $light-blue;
     display: inline-block;
     background-color: transparent;
     font-size: 16px;
@@ -192,7 +192,7 @@
 
 .posts-load-more, .comments-load-more{
   font-size: 16px;
-  color: rgba(100, 169, 105, 0.6);
+  color: #0C869B;
 }
 
 .posts-load-more, .comments-load-more {
@@ -597,7 +597,7 @@
       &:hover{
         text-decoration: none !important;
         background: inherit;
-        color: rgba(100, 169, 105, 0.9);
+        color: #0C869B;
       }
     }
   }
@@ -723,7 +723,7 @@ svg.drag-handle {
 
 .posts-page-content-header-title-draft {
   text-transform: uppercase;
-  color: rgba(100, 169, 105, 0.9)
+  color: #0C869B;
 }
 .post-category-display-container {
   width:50px;
@@ -1008,7 +1008,7 @@ svg.drag-handle {
   }
 }
 .posts-item-unread-dot {
-  color:rgba(100,170,105,.65);
+  color:#0C869B;
   font-size:30px;
   line-height:0px;
   position: relative;
@@ -1018,7 +1018,7 @@ svg.drag-handle {
 }
 
 .posts-item-unread {
-  color:rgba(100,170,105,.86);
+  color:#0C869B;
   margin-right:6px;
 }
 
