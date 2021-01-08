@@ -22,7 +22,8 @@ const styles = (theme: ThemeType): JssStyles => ({
   },
   modNote: {
     paddingTop: '4px',
-    color: theme.palette.grey[800]
+    color: theme.palette.grey[800],
+    ...theme.typography.postStyle
   },
   submit: {
     textAlign: 'right'
